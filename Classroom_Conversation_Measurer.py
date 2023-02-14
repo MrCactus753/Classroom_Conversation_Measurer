@@ -1,8 +1,8 @@
 from datetime import datetime
 import csv
 
-
-def csv_expander(list_of_lists):
+""" This part handles everything related to outputting the data. DO NOT TOUCH UNLESS YOU KNOW WHAT YOU ARE DOING!"""
+def csv_expander(list_of_lists): 
     today = datetime.now()
     klasse = str(input('In which classroom was this hospitation? \n>>>'))
     date = today.strftime('%d_%m_%y')
@@ -18,11 +18,11 @@ def timer(starttime):
     oldtime = starttime
     newtime = starttime
     entries = [['role', 'time spoken']]
-    speaker_roles={
+    speaker_roles={ # If you want to change the parameters, simply modify the list in the way shown.
     's':'student',
     'd':'teacher',
     'a':'nobody'}
-    print('Please enter one of the following roles: '
+    print('Please enter one of the following roles: ' # If you change the parameters, you can modify this list to have it also show up in the menu.
           '\n\"s\": STUDENT'
           '\n\"d\": TEACHER'
           '\n\"a\": NO SPEAKER')
@@ -33,8 +33,6 @@ def timer(starttime):
             if command == 'q':
                 print('Thanks for using the program, please retrive your data in the working directory.')
                 total_time = datetime.now() - start
-                #focus = str(input('Was war der Fokus dieser Stunde? \n >>> '))
-                #klasse = str(input('In which classroom was this hospitation? \n>>>'))
                 entries.append(['total time',total_time.total_seconds()])
                 csv_expander(entries)
                 break
@@ -54,7 +52,6 @@ def start():
     i = str(input('To start a new timing process, type \"start\". \nIf you want to quit recording after starting, simply enter \"q\".\n>>> '))
     if i == 'start':
         first_time = datetime.now()
-        #Klasse = str(input('Great, which class are you observing?\n>>> '))
         timer(first_time)
     elif i == 'q':
         print('Goodbye!')
@@ -65,3 +62,4 @@ def start():
 
 
 start()
+
